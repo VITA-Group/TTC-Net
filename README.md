@@ -1,12 +1,12 @@
-# TTC-Net: Beyond Test-Time Training
+# Beyond Test-Time Training: Learning to Reason via Hardware-Efficient Optimal Control
 
-This repository contains the core implementation for:
+This repository contains the core implementation for paper [Beyond Test-Time Training: Learning to Reason via Hardware-Efficient Optimal Control](https://arxiv.org/abs/2603.09221).
 
-**Beyond Test-Time Training: Learning to Reason via Hardware-Efficient Optimal Control**  
-Paper: https://arxiv.org/abs/2603.09221  
-Project page: https://vita-group.github.io/TTC-Net/
+[Peihao Wang](https://peihaowang.github.io), [Shan Yang](https://shanyang.me/), [Xijun Wang](https://xijun-cs.github.io/), [Tesi Xiao](https://tesixiao.github.io/), [Xin Liu](https://seanliu96.github.io/), [Changlong Yu](https://scholar.google.com/citations?user=IxrYJ6EAAAAJ), [Yu Lou](https://scholar.google.com/citations?user=PKUbHusAAAAJ), [Pan Li](https://sites.google.com/view/panli-purdue/home), [Atlas Wang](https://vita-group.github.io/research.html), [Ming Lin](https://www.cs.umd.edu/~lin/), [Rene Vidal](http://vision.jhu.edu/rvidal.html)
 
----
+[![Project Page](https://img.shields.io/badge/Project-Website-blue)](https://vita-group.github.io/TTC-Net/)
+[![Paper](https://img.shields.io/badge/Paper-arXiv%3A2603.09221-red)](https://arxiv.org/abs/2603.09221)
+[![Code](https://img.shields.io/badge/Code-GitHub-black)](https://github.com/VITA-Group/TTC-Net)
 
 ## Overview
 
@@ -18,8 +18,6 @@ The codebase provides:
   - `riccati` (direct PyTorch)
   - `kkt` (dual/KKT PyTorch)
   - `fused` (Triton fused kernel)
-
----
 
 ## Environment
 
