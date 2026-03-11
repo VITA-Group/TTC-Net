@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Beyond Test-Time Training Learning to Reason via Hardware-Efficient Optimal Control">
+  <meta name="keywords" content="LLM reasoning, optimal control, test-time control, TTC, LQR">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Beyond Test-Time Training Learning to Reason via Hardware-Efficient Optimal Control</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .author-block {
+      margin-right: 8px;
+    }
+
+    .university-block {
+      margin-right: 14px;
+      display: inline-block;
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #1d4ed8, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .paper-links .button {
+      margin: 4px;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">
+              <span class="gradient-text">Beyond Test-Time Training</span><br>
+              Learning to Reason via Hardware-Efficient Optimal Control
+            </h1>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://peihaowang.github.io">Peihao Wang</a><sup>1,2</sup>,</span>
+              <span class="author-block"><a href="https://shanyang.me/">Shan Yang</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://xijun-cs.github.io/">Xijun Wang</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://tesixiao.github.io/">Tesi Xiao</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://seanliu96.github.io/">Xin Liu</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=IxrYJ6EAAAAJ">Changlong Yu</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=PKUbHusAAAAJ">Yu Lou</a><sup>1</sup>,</span>
+              <br>
+              <span class="author-block"><a href="https://sites.google.com/view/panli-purdue/home">Pan Li</a><sup>3</sup>,</span>
+              <span class="author-block"><a href="https://vita-group.github.io/research.html">Atlas Wang</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://www.cs.umd.edu/~lin/">Ming Lin</a><sup>1,4</sup>,</span>
+              <span class="author-block"><a href="http://vision.jhu.edu/rvidal.html">Rene Vidal</a><sup>1,5</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors" style="margin-top: 0.75rem;">
+              <span class="university-block"><sup>1</sup>Amazon</span>
+              <span class="university-block"><sup>2</sup>University of Texas at Austin</span>
+              <span class="university-block"><sup>3</sup>Georgia Institute of Technology</span>
+              <br>
+              <span class="university-block"><sup>4</sup>University of Maryland</span>
+              <span class="university-block"><sup>5</sup>University of Pennsylvania</span>
+            </div>
+
+            <div class="is-size-5" style="margin: 1rem auto 1rem auto; max-width: 950px;">
+              <i><b>TL;DR:</b> We propose the Test-Time Control (TTC) for LLM reasoning, which formulates iterative reasoning as an optimal control problem solvable with hardware-efficient algorithms.</i>
+            </div>
+
+            <div class="paper-links">
+              <a href="https://arxiv.org/abs/2603.09221" target="_blank" class="button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+              <a href="https://vita-group.github.io/TTC-Net" target="_blank" class="button is-normal is-rounded is-light">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Associative memory has long underpinned the design of sequential models. Beyond recall, humans reason by projecting future states and selecting goal-directed actions, a capability that modern language models increasingly require but do not natively encode. While prior work uses reinforcement learning or test-time training, planning remains external to the model architecture. We formulate reasoning as optimal control and introduce the Test-Time Control (TTC) layer, which performs finite-horizon LQR planning over latent states at inference time, represents a value function within neural architectures, and leverages it as the nested objective to enable planning before prediction. To ensure scalability, we derive a hardware-efficient LQR solver based on a symplectic formulation and implement it as a fused CUDA kernel, enabling parallel execution with minimal overhead. Integrated as an adapter into pretrained LLMs, TTC layers improve mathematical reasoning performance by up to +27.8% on MATH-500 and 2-3x Pass@8 improvements on AMC and AIME, demonstrating that embedding optimal control as an architectural component provides an effective and scalable mechanism for reasoning beyond test-time training.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
