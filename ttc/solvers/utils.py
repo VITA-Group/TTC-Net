@@ -92,60 +92,6 @@ def _take_slice_(x,
     return y
 
 
-
-# @triton.jit(do_not_specialize=['idx_start', 'idx_end'])
-# def _indicator_range_(n_dims: tl.constexpr,
-#                 axis: tl.constexpr,            # may be negative or non-negative
-#                 idx_start,
-#                 idx_end,
-#                 dim: tl.constexpr):
-#     # Normalize idx once
-#     # ax = _normalize_axis_(n_dims, idx)
-#     # ax = idx
-#     tl.static_assert(axis < n_dims)
-#     tl.device_assert(idx_start < dim)
-#     tl.device_assert(idx_end < dim)
-
-#     y = tl.arange(0, dim)
-#     y = tl.where(y >= idx_start, 1, 0) * tl.where(y < idx_end, 1, 0)
-#     for n in tl.static_range(0, n_dims):
-#         if n != axis:
-#             y = tl.expand_dims(y, n)
-#     return y
-
-# @triton.jit
-# def _take_slice_range_(x,
-#                  n_dims: tl.constexpr,
-#                  axis: tl.constexpr,           # may be negative/positive
-#                  idx_start,
-#                  idx_end,
-#                  dim: tl.constexpr,
-#                  keep_dim: tl.constexpr = True):
-#     ind = tl.arange(idx_start, idx_end)
-#     x_slice = tl.gather(x, ind, axis)
-#     if keep_dim:
-#         x_slice = tl.expand_dims(x_slice, axis)
-#     return x_slice
-
-# @triton.jit
-# def take2d_kernel_range(x_ptr, out_ptr, M: tl.constexpr, N: tl.constexpr,
-#                   idx_start, idx_end):
-#     # build full (M,N) local tensor (row-major contiguous)
-#     r = tl.arange(0, M)[:, None]
-#     c = tl.arange(0, N)[None, :]
-#     x_ptrs = x_ptr + r * N + c
-#     x = tl.load(x_ptrs)
-
-#     y = _take_slice_range_(x, 2, 1, idx_start, idx_end, N, False)
-    
-#     tl.store(out_ptr, y)
-
-# x = torch.tensor([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], device="cuda").reshape(2, 5)
-# out_take = torch.empty((1, 2), device="cuda")
-# print(x)
-# take2d_kernel_range[(1,)](x, out_take, 2, 5, 0, 2, num_warps=1, num_stages=1)
-# print(out_take)
-
 # ===== test kernels (branch on constexpr idx and pass M/N directly) =====
 @triton.jit
 def take2d_kernel(x_ptr, out_ptr, M: tl.constexpr, N: tl.constexpr,
