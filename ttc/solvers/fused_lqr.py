@@ -268,21 +268,6 @@ class FusedLQRSolveFunc(torch.autograd.Function):
         cache_level: str = "LU",
         inv_guard: bool = False,
     ):
-        # assert cache_level in ["none", "Lam0", "LU", "LU_lqr"]
-        # if cache_level == "none":
-        #     ctx.save_for_backward(h0, A_diag, B, Q, R_diag)
-        # elif cache_level == "Lam0":
-        #     u, lam0 = fused_homo_lqr_layer_fwd_wLam0(A_diag, B, Q, R_diag, h0, T, inv_guard=inv_guard)
-        #     ctx.save_for_backward(h0, A_diag, B, Q, R_diag, lam0)
-        # elif cache_level == "LU":
-        #     u, lam0, LU, pivots, Y3_out = fused_homo_lqr_layer_fwd_wLU(A_diag, B, Q, R_diag, h0, T, inv_guard=inv_guard)
-        #     ctx.save_for_backward(h0, A_diag, B, Q, R_diag, lam0, LU, pivots, Y3_out)
-        # elif cache_level == "LU_lqr":
-        #     u, lam0, LU, pivots, Y3_out = fused_lqr_layer_fwd(A_diag, B, Q, R_diag, Q_f, gamma_A, gamma_B, gamma_Q, h0, T, inv_guard=inv_guard)
-        #     ctx.save_for_backward(h0, A_diag, B, Q, R_diag, lam0, LU, pivots, Y3_out)
-        # else:
-        #     raise ValueError(f"Invalid cache level: {cache_level}")
-    
         u, lam0, LU, pivots, Y3_out = fused_lqr_layer_fwd(A_diag, B, Q, R_inv_diag, Q_f, gamma_A, gamma_B, gamma_Q, h0, T, inv_guard=inv_guard)
         ctx.save_for_backward(h0, A_diag, B, Q, R_inv_diag, gamma_A, gamma_B, gamma_Q, lam0, LU, pivots, Y3_out)
         
@@ -302,18 +287,6 @@ class FusedLQRSolveFunc(torch.autograd.Function):
         h0, A_diag, B, Q, R_inv_diag, gamma_A, gamma_B, gamma_Q, lam0, LU, pivots, Y3_out = ctx.saved_tensors
         d_A_diag, d_B, d_Q, d_R_diag_inv, d_Qf, d_gamma_A, d_gamma_B, d_gamma_Q, d_h0 = fused_lqr_layer_bwd(A_diag, B, Q, R_inv_diag,
             gamma_A, gamma_B, gamma_Q, d_u, h0, lam0, LU, pivots, Y3_out, T, inv_guard=inv_guard)
-
-
-        # print(f"grad_A:", T, d_A_diag.min(), d_A_diag.max(), d_A_diag.mean())
-        # print(f"d_B:", T, d_B.min(), d_B.max(), d_B.mean())
-        # print(f"d_Q:", T, d_Q.min(), d_Q.max(), d_Q.mean())
-        # print(f"d_R_diag_inv:", T, d_R_diag_inv.min(), d_R_diag_inv.max(), d_R_diag_inv.mean())
-        # print(f"d_Qf:", T, d_Qf.min(), d_Qf.max(), d_Qf.mean())
-        # print(f"d_gamma_A:", T, d_gamma_A.min(), d_gamma_A.max(), d_gamma_A.mean())
-        # print(f"d_gamma_B:", T, d_gamma_B.min(), d_gamma_B.max(), d_gamma_B.mean())
-        # print(f"d_gamma_Q:", T, d_gamma_Q.min(), d_gamma_Q.max(), d_gamma_Q.mean())
-        # print(f"d_h0:", T, d_h0.min(), d_h0.max(), d_h0.mean())
-
 
         return d_A_diag, d_B, d_Q, d_R_diag_inv, d_Qf, d_gamma_A, d_gamma_B, d_gamma_Q, d_h0, None, None, None
 
