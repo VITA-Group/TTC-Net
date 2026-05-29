@@ -1,6 +1,6 @@
 # Beyond Test-Time Memory: State-Space Optimal Control for LLM Reasoning 
 
-This repository contains the core implementation for paper [Beyond Test-Time Training: Learning to Reason via Hardware-Efficient Optimal Control](https://arxiv.org/abs/2603.09221).
+This repository contains the core implementation for paper [Beyond Test-Time Memory: State-Space Optimal Control for LLM Reasoning ](https://arxiv.org/abs/2603.09221).
 
 [Peihao Wang](https://peihaowang.github.io), [Shan Yang](https://shanyang.me/), [Xijun Wang](https://xijun-cs.github.io/), [Tesi Xiao](https://tesixiao.github.io/), [Xin Liu](https://seanliu96.github.io/), [Changlong Yu](https://scholar.google.com/citations?user=IxrYJ6EAAAAJ), [Yu Lou](https://scholar.google.com/citations?user=PKUbHusAAAAJ), [Pan Li](https://sites.google.com/view/panli-purdue/home), [Atlas Wang](https://vita-group.github.io/research.html), [Ming Lin](https://www.cs.umd.edu/~lin/), [Rene Vidal](http://vision.jhu.edu/rvidal.html)
 
@@ -58,10 +58,10 @@ y = ttc(x, T=64)
 If you find this repository useful, please cite:
 
 ```bibtex
-@article{wang2026beyond,
-  title   = {Beyond Test-Time Training: Learning to Reason via Hardware-Efficient Optimal Control},
-  author  = {Wang, Peihao and Yang, Shan and Wang, Xijun and Xiao, Tesi and Liu, Xin and Yu, Changlong and Lou, Yu and Li, Pan and Wang, Atlas and Lin, Ming and Vidal, Rene},
-  journal = {arXiv preprint arXiv:2603.09221},
-  year    = {2026}
+@inproceedings{wang2026beyond,
+  title={Beyond Test-Time Memory: State-Space Optimal Control for LLM Reasoning},
+  author={Wang, Peihao and Yang, Shan and Wang, Xijun and Xiao, Tesi and Liu, Xin and Yu, Changlong and Lou, Yu and Li, Pan and Wang, Atlas and Lin, Ming and Vidal, Rene},
+  booktitle={International Conference on Machine Learning (ICML)},
+  year={2026}
 }
 ```
