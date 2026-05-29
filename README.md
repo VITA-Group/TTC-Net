@@ -1,4 +1,4 @@
-# Beyond Test-Time Training: Learning to Reason via Hardware-Efficient Optimal Control
+# Beyond Test-Time Memory: State-Space Optimal Control for LLM Reasoning 
 
 This repository contains the core implementation for paper [Beyond Test-Time Training: Learning to Reason via Hardware-Efficient Optimal Control](https://arxiv.org/abs/2603.09221).
 
