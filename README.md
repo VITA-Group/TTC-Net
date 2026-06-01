@@ -2,7 +2,7 @@
 
 This repository contains the core implementation for paper [Beyond Test-Time Memory: State-Space Optimal Control for LLM Reasoning ](https://arxiv.org/abs/2603.09221).
 
-[Peihao Wang](https://peihaowang.github.io), [Shan Yang](https://shanyang.me/), [Xijun Wang](https://xijun-cs.github.io/), [Tesi Xiao](https://tesixiao.github.io/), [Xin Liu](https://seanliu96.github.io/), [Changlong Yu](https://scholar.google.com/citations?user=IxrYJ6EAAAAJ), [Yu Lou](https://scholar.google.com/citations?user=PKUbHusAAAAJ), [Pan Li](https://sites.google.com/view/panli-purdue/home), [Atlas Wang](https://vita-group.github.io/research.html), [Ming Lin](https://www.cs.umd.edu/~lin/), [Rene Vidal](http://vision.jhu.edu/rvidal.html)
+[Peihao Wang](https://peihaowang.github.io), [Shan Yang](https://shanyang.me/), [Xijun Wang](https://xijun-cs.github.io/), [Tesi Xiao](https://tesixiao.github.io/), [Xin Liu](https://seanliu96.github.io/), [Changlong Yu](https://scholar.google.com/citations?user=IxrYJ6EAAAAJ), [Yu Lou](https://scholar.google.com/citations?user=PKUbHusAAAAJ), [Pan Li](https://sites.google.com/view/panli-purdue/home), [Atlas Wang](https://www.vita-group.space/pi), [Ming Lin](https://www.cs.umd.edu/~lin/), [Rene Vidal](http://vision.jhu.edu/rvidal.html)
 
 [![Project Page](https://img.shields.io/badge/Project-Website-blue)](https://vita-group.github.io/TTC-Net/)
 [![Paper](https://img.shields.io/badge/Paper-arXiv%3A2603.09221-red)](https://arxiv.org/abs/2603.09221)
